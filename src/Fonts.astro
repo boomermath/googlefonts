@@ -1,0 +1,33 @@
+---
+import { constructURL } from "google-fonts-helper";
+import { getCssFromUrl } from "./util";
+import type { GoogleFonts } from "google-fonts-helper";
+
+const { googleFontsConfig, inline } = Astro.props as {
+  googleFontsConfig: GoogleFonts;
+  inline: boolean;
+};
+
+let content: string;
+const url = constructURL(googleFontsConfig);
+
+if (!url) throw new Error("Invalid font configuration!");
+
+if (!import.meta.env.DEV) {
+  content = url;
+} else if (inline) {
+  content = await getCssFromUrl(url);
+} else {
+    //TODO : download css files
+    content = url;
+}
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+{
+    !import.meta.env.DEV ?
+    <link rel="stylesheet" href={content} /> : 
+    <style is:inline set:html={content}></style>
+}

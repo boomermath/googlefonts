@@ -1,0 +1,21 @@
+{
+  "name": "astro-google-fonts",
+  "version": "1.0.0",
+  "description": "Google fonts optimization for astro",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.json"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "author": "boomermath",
+  "license": "ISC",
+  "devDependencies": {
+    "astro": "^1.0.0-beta.17"
+  },
+  "dependencies": {
+    "google-fonts-helper": "^3.0.0"
+  }
+}
