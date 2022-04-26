@@ -13,7 +13,7 @@ const url = constructURL(googleFontsConfig);
 
 if (!url) throw new Error("Invalid font configuration!");
 
-if (!import.meta.env.DEV) {
+if (import.meta.env.DEV) {
   content = url;
 } else if (inline) {
   content = await getCssFromUrl(url);
@@ -27,7 +27,7 @@ if (!import.meta.env.DEV) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 {
-    !import.meta.env.DEV ?
+    import.meta.env.DEV ?
     <link rel="stylesheet" href={content} /> : 
     <style is:inline set:html={content}></style>
 }
