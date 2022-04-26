@@ -2,9 +2,6 @@
   "name": "astro-google-fonts",
   "version": "1.0.0",
   "description": "Google fonts optimization for astro",
-  "scripts": {
-    "build": "tsc --project tsconfig.json"
-  },
   "type": "module",
   "exports": {
     ".": "./src/index.js"
